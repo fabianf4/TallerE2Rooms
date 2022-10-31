@@ -11,12 +11,16 @@ public class Act {
 
     private String description;
 
+    @OneToOne
+    private Meet meet;
+
     public Act() {
     }
 
-    public Act(int id, String description) {
+    public Act(int id, String description,Meet meet) {
         this.id = id;
         this.description = description;
+        this.meet = meet;
     }
 
     public int getId() {
@@ -33,5 +37,13 @@ public class Act {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Meet getMeet() {
+        return meet;
+    }
+
+    public void setMeet(Meet meet) {
+        this.meet = meet;
     }
 }

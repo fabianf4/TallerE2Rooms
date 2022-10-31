@@ -20,20 +20,16 @@ public class Meet {
 
     private LocalDateTime dateMeet;
 
-    @OneToOne
-    private Act act;
-
     @ManyToOne
     private Room room;
 
     public Meet() {
     }
 
-    public Meet(int id, String affair, LocalDateTime dateMeet, Act act, Room room) {
+    public Meet(int id, String affair, LocalDateTime dateMeet, Room room) {
         this.id = id;
         this.affair = affair;
         this.dateMeet = dateMeet;
-        this.act = act;
         this.room = room;
     }
 
@@ -59,14 +55,6 @@ public class Meet {
 
     public void setDateMeet(LocalDateTime dateMeet) {
         this.dateMeet = dateMeet;
-    }
-
-    public Act getAct() {
-        return act;
-    }
-
-    public void setAct(Act act) {
-        this.act = act;
     }
 
     public Room getRoom() {

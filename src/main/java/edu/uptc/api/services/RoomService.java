@@ -22,8 +22,8 @@ public class RoomService {
     }
 
     public Room findById(int id){
-        Optional<Room> optRoom = roomRepository.findById(id);
-        return optRoom.isPresent()? optRoom.get() : null;
+        Optional<Room> room = roomRepository.findById(id);
+        return room.isPresent() ? room.get() : null;
     }
 
     public Room update(Room room){
@@ -34,8 +34,9 @@ public class RoomService {
         }
     }
 
-    public Room delete(Room room){
-        if(findById(room.getId()) != null){
+    public Room delete(int id){
+        Room room = findById(id);
+        if(room != null){
             roomRepository.delete(room);
             return room;
         }else{

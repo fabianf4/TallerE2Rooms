@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //https://www.baeldung.com/spring-cors
-@CrossOrigin
+
 @RestController
 @RequestMapping(value = "/room")
 public class RoomController {
@@ -37,8 +37,8 @@ public class RoomController {
         return roomService.update(room);
     }
 
-    @DeleteMapping
-    public Room delete(@RequestBody Room room){
-        return roomService.delete(room);
+    @DeleteMapping("/{id}")
+    public Room delete(@PathVariable int id){
+        return roomService.delete(id);
     }
 }

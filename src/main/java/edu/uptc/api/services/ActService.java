@@ -54,4 +54,8 @@ public class ActService {
             return null;
         }
     }
+
+    public List<Act> getActsByMeet(Meet meet){
+        return actRepository.findByMeet(meet);
+    }
 }

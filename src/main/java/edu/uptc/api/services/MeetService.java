@@ -23,6 +23,7 @@ public class MeetService {
     }
 
     public Meet save(Meet meet) {
+
         Room room = roomService.findById(meet.getRoom().getId());
         if (room != null) {
             meet.setRoom(room);
@@ -53,5 +54,9 @@ public class MeetService {
 
     public List<Meet> getMeets(){
         return meetRepository.findAll();
+    }
+
+    public List<Meet> getMeetsByRoom(Room room){
+        return meetRepository.findByRoom(room);
     }
 }

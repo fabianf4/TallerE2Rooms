@@ -1,7 +1,9 @@
 package edu.uptc.api.controllers;
 
 import edu.uptc.api.entities.Meet;
+import edu.uptc.api.entities.Room;
 import edu.uptc.api.services.MeetService;
+import edu.uptc.api.services.RoomService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -9,9 +11,11 @@ import java.util.List;
 @RequestMapping(value = "/meet")
 public class MeetController {
     private MeetService meetService;
+    private RoomService roomService;
 
-    public MeetController(MeetService meetService){
+    public MeetController(MeetService meetService,RoomService roomService){
         this.meetService = meetService;
+        this.roomService = roomService;
     }
 
     @GetMapping
@@ -37,5 +41,15 @@ public class MeetController {
     @DeleteMapping
     public Meet delete(@RequestBody Meet meet){
         return meetService.delete(meet);
+    }
+
+    @GetMapping("/room/{id}")
+    public List<Meet> getRoomsByMeet(@PathVariable int id){
+        Room room =roomService.findById(id);
+        if(room != null){
+            return meetService.getMeetsByRoom(room);
+        }else{
+            return null;
+        }
     }
 }

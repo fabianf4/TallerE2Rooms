@@ -46,8 +46,9 @@ public class ActService {
         }
     }
 
-    public Act delete(Act act) {
-        if (findById(act.getId()) != null) {
+    public Act delete(int id) {
+        Act act = findById(id);
+        if (act != null) {
             actRepository.delete(act);
             return act;
         } else {

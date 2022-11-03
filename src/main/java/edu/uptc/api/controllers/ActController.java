@@ -38,9 +38,9 @@ public class ActController {
         return actService.update(act);
     }
 
-    @DeleteMapping
-    public Act delete(@RequestBody Act act){
-        return actService.delete(act);
+    @DeleteMapping("/{id}")
+    public Act delete(@PathVariable Integer id){
+        return actService.delete(id);
     }
 
     @GetMapping("/meet/{id}")

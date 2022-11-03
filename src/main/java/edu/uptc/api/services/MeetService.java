@@ -43,8 +43,9 @@ public class MeetService {
             return null;
         }
     }
-    public Meet delete(Meet meet){
-        if(findById(meet.getId()) != null){
+    public Meet delete(int id){
+        Meet meet = findById(id);
+        if(meet != null){
             meetRepository.delete(meet);
             return meet;
         }else{

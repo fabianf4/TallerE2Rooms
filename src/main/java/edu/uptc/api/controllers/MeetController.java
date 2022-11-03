@@ -38,9 +38,9 @@ public class MeetController {
         return meetService.update(meet);
     }
 
-    @DeleteMapping
-    public Meet delete(@RequestBody Meet meet){
-        return meetService.delete(meet);
+    @DeleteMapping("/{id}")
+    public Meet delete(@PathVariable Integer id){
+        return meetService.delete(id);
     }
 
     @GetMapping("/room/{id}")
